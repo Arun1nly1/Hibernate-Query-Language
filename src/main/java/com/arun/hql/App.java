@@ -66,14 +66,19 @@ public class App
 //   			}
    		
    		//Fetching columns name and marks only
-   		NativeQuery query = session.createNativeQuery("select name,marks from student where marks>60");
-   		query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-		List students = query.list();
+//   		NativeQuery query = session.createNativeQuery("select name,marks from student where marks>60");
+//   		query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+//		List students = query.list();
+//			
+//			for(Object o : students) {
+//				Map m = (Map)o;
+//				System.out.println(m.get("name")+" "+m.get("marks"));
+//			}
+//			
 			
-			for(Object o : students) {
-				Map m = (Map)o;
-				System.out.println(m.get("name")+" "+m.get("marks"));
-			}
+//			Get vs Load
+			Student s = session.load(Student.class, 6);
+			System.out.println(s);
    			
    		session.getTransaction().commit();
     }
